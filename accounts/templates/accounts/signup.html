@@ -1,44 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .left-section {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .left-section h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .left-section p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .left-section a {
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 0.95rem;
+        }
+        .right-section {
+            padding: 30px 20px;
+            flex: 1.2;
+        }
+        .right-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .right-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .right-section form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .right-section form button {
+            padding: 10px 15px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .right-section form button:hover {
+            background: #5b0faf;
+        }
+        .right-section .social-signup {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .right-section .social-signup img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
-  <header>
-      <h1>Create an Account</h1>
-  </header>
-
-  <div class="container">
-      <h2>Sign Up</h2>
-
-      <!-- Display messages if any -->
-      {% if messages %}
-          <div class="messages">
-              {% for message in messages %}
-                  <p>{{ message }}</p>
-              {% endfor %}
-          </div>
-      {% endif %}
-
-      <!-- Display form errors -->
-      {% if form.errors %}
-          <div class="form-errors">
-              <ul>
-                  {% for field in form %}
-                      {% for error in field.errors %}
-                          <li>{{ error }}</li>
-                      {% endfor %}
-                  {% endfor %}
-              </ul>
-          </div>
-      {% endif %}
-
-      <form method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit">Sign Up</button>
-      </form>
-
-      <a href="{% url 'login' %}">Already have an account? Login</a>
-  </div>
-
-  <div class="footer">
-      <p>&copy; 2024 Your Website. All rights reserved.</p>
-  </div>
-
+    <div class="container">
+        <div class="left-section">
+            <h1>Come join us!</h1>
+            <p>We are so excited to have you here! If you haven't already, create an account to get access to exclusive offers, rewards, and discounts.</p>
+            <a href="{% url 'login' %}">Already have an account? Sign in.</a>
+        </div>
+        <div class="right-section">
+            <h2>Signup</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Signup</button>
+            </form>
+            
+        </div>
+    </div>
 </body>
+</html>
