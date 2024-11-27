@@ -1,0 +1,89 @@
+<!-- accounts/templates/accounts/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #984caf;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .profile-info {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .profile-info p {
+            margin: 10px 0;
+        }
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .links a {
+            color: #984caf;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .links a:hover {
+            color: #984caf;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Profile Information</h1>
+    </header>
+
+    <div class="container">
+        <h2>Your Profile</h2>
+        <div class="profile-info">
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+            <p><strong>Date Joined:</strong> {{ request.user.date_joined }}</p>
+            <p><strong>Last Updated:</strong> {{ request.user.last_login }}</p>
+        </div>
+
+        <div class="links">
+            <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

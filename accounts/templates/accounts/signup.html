@@ -1,0 +1,44 @@
+<body>
+  <header>
+      <h1>Create an Account</h1>
+  </header>
+
+  <div class="container">
+      <h2>Sign Up</h2>
+
+      <!-- Display messages if any -->
+      {% if messages %}
+          <div class="messages">
+              {% for message in messages %}
+                  <p>{{ message }}</p>
+              {% endfor %}
+          </div>
+      {% endif %}
+
+      <!-- Display form errors -->
+      {% if form.errors %}
+          <div class="form-errors">
+              <ul>
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                          <li>{{ error }}</li>
+                      {% endfor %}
+                  {% endfor %}
+              </ul>
+          </div>
+      {% endif %}
+
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Sign Up</button>
+      </form>
+
+      <a href="{% url 'login' %}">Already have an account? Login</a>
+  </div>
+
+  <div class="footer">
+      <p>&copy; 2024 Your Website. All rights reserved.</p>
+  </div>
+
+</body>

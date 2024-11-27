@@ -1,0 +1,96 @@
+accounts/templates/accounts/dashboard.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #984caf;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 15px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #984caf;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        a:hover {
+            color: #984caf;
+        }
+        button {
+            background-color: #984caf;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #984caf;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Your Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <h2>Hi, {{ user.username }}!</h2>
+        <ul>
+            <li><a href="{% url 'profile' %}">View Profile</a></li>
+            <li><a href="{% url 'change_password' %}">Change Password</a></li>
+            <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
+
